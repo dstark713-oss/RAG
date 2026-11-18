@@ -4,7 +4,8 @@ This repository is the durable, curated research memory for the AI trading exper
 
 ## Purpose
 Store retrievable, auditable context for future research sessions:
-- project mandate, role boundaries, and user-approved constraints;
+- project mandate, role boundaries, user-approved constraints;
+- **agent-specific daily operating instructions and current working context**;
 - canonical, reusable research findings and methodology;
 - dated model/system state, evidence snapshots, and decisions;
 - issuer fundamentals, corporate events, valuation, and narrative risk;
@@ -21,7 +22,7 @@ Store retrievable, auditable context for future research sessions:
 8. Do not store credentials, API keys, broker secrets, raw datasets, bulky logs, or unnecessary personal data.
 
 ## Structure
-- `context/` — project mandate, roles, constraints, operating protocol.
+- `context/` — project mandate, roles, constraints, operating protocol, and the agent's daily instructions/current state.
 - `knowledge/` — compact canonical memory and reusable findings.
 - `research/` — dated research notes and market context.
 - `issuers/<TICKER>/` — durable issuer dossiers and dated updates when needed.
@@ -33,12 +34,14 @@ Detailed raw data, scripts, anomaly registers, and full audit outputs belong in 
 
 ## Retrieval protocol
 At the start of a relevant session:
-1. Read this README, `context/PROJECT_MANDATE.md`, and `context/RESEARCH_OPERATING_PROTOCOL.md`.
+1. Read this README, `context/PROJECT_MANDATE.md`, `context/RESEARCH_OPERATING_PROTOCOL.md`, and `context/DAILY_AGENT_INSTRUCTIONS.md`.
 2. Read the relevant canonical files in `knowledge/`.
 3. Retrieve the latest applicable dated system-state, research, and decision files; check for later corrections or superseding decisions.
 4. Use methodology and templates when designing or auditing research.
 5. Cite repository paths in conclusions. If evidence is incomplete, say what is missing rather than inventing it.
 
+The daily instructions define the current operating process and point to the latest allocation context. They are agent-specific and expected to evolve as the tool stack and research capabilities change. Dated decisions remain immutable history; do not treat the latest weights as standing instructions after their intended session.
+
 Canonical knowledge is the compact starting point; dated files preserve provenance and decision history. Do not load every historical note by default.
 
-Initialized 2026-11-17. The first issuer screen and 2026-11-17 allocation documents are dated research snapshots, not a complete comparable fundamental database or a standing portfolio instruction.
+Initialized 2026-11-17. Daily agent instructions and first finalized daily allocation context added 2026-11-18.
