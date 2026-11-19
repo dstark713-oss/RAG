@@ -154,17 +154,19 @@ When supplying code, include a header comment with folder and filename. Give exa
 
 ## 6. Current live context pointer
 
-As of the 2026-11-18 review, the final discretionary target allocation for 2026-11-19 is recorded in:
-`decisions/2026-11-18_ALLOCATION_2026-11-19.md`
+As of the 2026-11-19 review, the final discretionary target allocation for 2026-11-20 is recorded in:
+`decisions/2026-11-19_ALLOCATION_2026-11-20.md`
 
 Target weights:
 - T 10%
-- X5 10%
+- X5 5%
 - GCHE 2.5%
-- Cash 77.5%
-- ASTR 0%; MDMG 0%; no new positions in DATA/LEAS or other scanner candidates.
+- Cash 82.5%
+- All other equities 0%; MGKL is a hard veto despite ML rank 1.
 
-This is a target decision, not confirmation of execution. The next daily review must begin from fresh prices, new signal and actual user-confirmed holdings, not blindly carry these weights forward.
+This is a target decision, not confirmation of execution. Actual user-confirmed holdings/fills for 2026-11-19 remain unknown. The next daily review must begin from fresh prices, new signal and actual user-confirmed holdings, not blindly carry these weights forward.
+
+Known review-script issue: `daily_agent_review.py` still hardcodes a stale discretionary holdings block (T 10%, X5 10%, ASTR 5%, GCHE 2.5%). Ignore its portfolio return/attribution section until the script accepts actual positions or explicit weights; use it only for market diagnostics, ML ranking, technical data and correlations.
 
 ## 7. Operating philosophy
 
