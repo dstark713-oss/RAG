@@ -1,47 +1,75 @@
-# RAG — persistent research memory for AI Trader
+# RAG — operational knowledge base for AI Trader
 
-This repository is the durable, curated research memory for the AI trading experiment. It is separate from the production trading-system repository (`dstark713-oss/model1`) and the quantitative research/data-engineering repository (`dstark713-oss/research2`).
+This repository exists exclusively for the AI trading agent. It is the agent's readable operating manual, compact knowledge base, tool directory, and dated decision record. It is not a general assistant memory, research archive, chat archive, or workspace for the user's and assistant's ongoing R&D.
 
-## Purpose
-Store retrievable, auditable context for future research sessions:
-- project mandate, role boundaries, user-approved constraints;
-- **agent-specific daily operating instructions and current working context**;
-- canonical, reusable research findings and methodology;
-- dated model/system state, evidence snapshots, and decisions;
-- issuer fundamentals, corporate events, valuation, and narrative risk;
-- reusable research templates.
+## Sole purpose
 
-## Rules
-1. Point-in-time correctness: only use information publicly available by the decision timestamp.
-2. Provenance: every material fact needs source, publication date, retrieval date, and report period where applicable.
-3. Distinguish reported facts, calculations, third-party estimates, interpretations, hypotheses, and unknowns.
-4. Keep dated snapshots; do not silently overwrite old conclusions.
-5. Never describe backtest results as live performance.
-6. Do not modify the strategy or its parameters without explicit user approval.
-7. This repository is external memory, not model training. Future sessions must retrieve relevant files; nothing is automatically loaded into model weights.
-8. Do not store credentials, API keys, broker secrets, raw datasets, bulky logs, or unnecessary personal data.
+Help the trading agent make better practical allocation decisions. Every stored item must help the agent do at least one of the following:
+- understand its mandate, authority, constraints, and decision process;
+- identify which available tool, script, data source, or research procedure to run for a concrete decision question;
+- understand what an existing tool measures, how to invoke it, and its known limitations;
+- apply established market, issuer, liquidity, risk, and portfolio knowledge;
+- distinguish evidence strength and point-in-time validity;
+- construct, explain, review, and learn from actual allocation decisions.
+
+If information cannot change, validate, constrain, or explain a practical agent action, it does not belong here.
+
+## Explicit exclusions
+
+Do not store:
+- the assistant's personal memory, preferences, or notes about how to continue research conversations;
+- EDA plans, sprint plans, experiment queues, speculative research ideas, or unvalidated model-development notes;
+- raw research results that have not been translated into a decision-relevant operational finding;
+- research journals, code-development history, debugging transcripts, or duplicated project documentation;
+- information included merely to help the assistant remember work that belongs in another repository.
+
+Research projects keep their complete journals, data, scripts, audits, and experiment results in their own `researchN` repositories. A result may enter this RAG only after it has a clear practical implication for the trading agent, with evidence, limitations, and instructions for use.
+
+## Repository boundaries
+
+- `dstark713-oss/RAG` — only the trading agent's operational instructions, tool knowledge, validated decision-relevant knowledge, issuer/event evidence needed for allocation, and dated allocation decisions.
+- `dstark713-oss/model1` — production/pilot model, scripts, configuration, and artifacts. Do not change its logic or parameters without explicit approval.
+- `dstark713-oss/research`, `research2`, and future `researchN` repositories — research journals, datasets, code, experiments, diagnostics, and full evidence trails. They are not agent memory.
+
+## Admission test
+
+Before adding or retaining a file, ask:
+1. Can the agent understand it without access to the original chat?
+2. Does it tell the agent what to do, what tool to run, what a result means, or what constraint to respect when allocating?
+3. Is the information current or clearly dated, sourced, and qualified?
+4. Is it concise enough to retrieve at decision time?
+5. Is its detailed source of truth preserved in the appropriate project repository?
+
+If the answer to the practical-use question is no, keep it in the research repository, not here.
+
+## Core rules
+
+1. Point-in-time correctness: use only information public by the decision timestamp.
+2. Provenance: preserve source, publisher, publication date, retrieval date, and report period where applicable.
+3. Distinguish reported facts, calculations, estimates, interpretations, hypotheses, and unknowns.
+4. Never describe backtest results as live performance.
+5. Never change production strategy rules without explicit user approval.
+6. Never claim an order, script, or local action was executed without confirmation.
+7. Do not store credentials, broker secrets, raw datasets, bulky logs, or unnecessary personal information.
+8. Keep dated decisions as history; never treat an expired target allocation as a standing instruction.
 
 ## Structure
-- `context/` — project mandate, roles, constraints, operating protocol, and the agent's daily instructions/current state.
-- `knowledge/` — compact canonical memory and reusable findings.
-- `research/` — dated research notes and market context.
-- `issuers/<TICKER>/` — durable issuer dossiers and dated updates when needed.
-- `decisions/` — dated allocation proposals and decision history.
-- `methodology/` — point-in-time, evidence, and risk-review standards.
-- `templates/` — reusable research templates.
 
-Detailed raw data, scripts, anomaly registers, and full audit outputs belong in `research2`; only concise findings that can guide future research should be copied here.
+- `context/` — agent mandate, operating instructions, authority, and current workflow.
+- `knowledge/` — concise, reusable decision rules, tool descriptions, and established market knowledge.
+- `research/` — only dated evidence notes with a direct, current allocation or risk-review use.
+- `issuers/<TICKER>/` — issuer facts, events, risks, and dated updates relevant to candidate evaluation.
+- `decisions/` — dated allocation proposals, final decisions, and outcome reviews.
+- `methodology/` — operational standards the agent applies when evaluating evidence and risk.
+- `templates/` — reusable formats for issuer reviews and allocation work.
 
 ## Retrieval protocol
-At the start of a relevant session:
-1. Read this README, `context/PROJECT_MANDATE.md`, `context/RESEARCH_OPERATING_PROTOCOL.md`, and `context/DAILY_AGENT_INSTRUCTIONS.md`.
-2. Read the relevant canonical files in `knowledge/`.
-3. Retrieve the latest applicable dated system-state, research, and decision files; check for later corrections or superseding decisions.
-4. Use methodology and templates when designing or auditing research.
-5. Cite repository paths in conclusions. If evidence is incomplete, say what is missing rather than inventing it.
 
-The daily instructions define the current operating process and point to the latest allocation context. They are agent-specific and expected to evolve as the tool stack and research capabilities change. Dated decisions remain immutable history; do not treat the latest weights as standing instructions after their intended session.
+At the start of an allocation session:
+1. Read `context/PROJECT_MANDATE.md`, `context/RESEARCH_OPERATING_PROTOCOL.md`, and `context/DAILY_AGENT_INSTRUCTIONS.md`.
+2. Read relevant canonical files in `knowledge/` and the tool documentation needed for the current question.
+3. Retrieve the latest applicable model/system state, issuer/event evidence, and allocation decision. Check for corrections or superseding records.
+4. Run only tools that answer a concrete decision question; do not execute a research program merely because it exists elsewhere.
+5. Cite the relevant RAG paths and primary sources in the decision. State missing evidence instead of inventing it.
 
-Canonical knowledge is the compact starting point; dated files preserve provenance and decision history. Do not load every historical note by default.
-
-Initialized 2026-11-17. Daily agent instructions and first finalized daily allocation context added 2026-11-18.
+Initialized 2026-11-17. Repository scope clarified on 2026-11-20: this is exclusively the trading agent's practical knowledge base.
